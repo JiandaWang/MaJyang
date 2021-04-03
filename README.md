@@ -23,6 +23,8 @@ If your screen resolution is 1920x1080, you should be able to directly use the p
 
 Before first time using the tool, you might have to manually set both font paths ***g_FontPath_str*** and ***g_PAIFontPath_str***. Especially to display the tiles, you need one ttf font which support utf-8 Mahjong tiles. Please refer the comment in the code.
   
+Also, since the GitHub has a upload limit of 25mb using browser, the pre-trained model is zipped. Please un-zip it first under Model\\.
+  
 After you opened the notebook, just click "Cell->Run All" to run the tool. After the excution, the tool will start to monitor your keyboard input.  
 There are two valid inputs:
 - "Esc": stop the tool.
