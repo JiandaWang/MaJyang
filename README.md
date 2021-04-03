@@ -18,8 +18,9 @@ Currently supported feature(s):
 - torchvision -> well known machine learning framework
 
 # “Plug and Play”
-If you have Windows (10) as operation system and you screen resolution is 1920x1080, you should be able to directly use the prepared notebook "Application".  
-  
+If your screen resolution is 1920x1080, you should be able to directly use the prepared notebook "Application".  
+(Note: as mentioned before, if you are not using Windows, you have to use other packages to monitor your keyboard input. Please modify the ***onKeyboardEvent*** and ***main*** function.)  
+
 Before first time using the tool, you might have to manually set both font paths ***g_FontPath_str*** and ***g_PAIFontPath_str***. Especially to display the tiles, you need one ttf font which support utf-8 Mahjong tiles. Please refer the comment in the code.
   
 After you opened the notebook, just click "Cell->Run All" to run the tool. After the excution, the tool will start to monitor your keyboard input.  
@@ -32,3 +33,16 @@ Note: the tool is expecting certain form of the screenshot.
 - Currently, it only supports when your hand is 门清 / メンゼンチン / all concealed.
 - Please use default single color background in game for stability. 
 - Please ensure your hand in the screenshot is not covered by any animation effect or your mouse cursor.
+
+# Adjust the resolution
+If your resolution is different, you still can use the pre-trained model, but with some small adaption.  
+Note: some parameters are imported from the notebook "Separation". You will need to do changes there.  
+
+- ***g_EgoHandCropLeftUpperX_int, g_EgoHandCropLeftUpperY_int, g_EgoHandCropRightLowerX_int, g_EgoHandCropRightLowerY_int***:  
+These parameters define the upper left and lower right corner of the rectangle including all tiles in your hand. Please refer the pillow documention for the coordinate definition. ***Unit: pixel***
+- ***g_EgoHandCropMinPaiArea_int***:  
+Minimal area for one tile. This thershold is used to filter out possible small contour of "noise" from the screenshot. ***Unit: pixel^2***
+- ***g_EgoHandGaussKSize_int***:  
+As the screenshot is taken directly from the game, usually no Gaussian filter is necessary. But since the tiles are displayed very closed to each other, we have to blur the screenshot a little bit so that the contours can be found correctly. ***Unit: pixel***
+- ***g_AvgW_int, g_AvgH_int***:  
+Average width and height of one tile. ***Unit: pixel***
